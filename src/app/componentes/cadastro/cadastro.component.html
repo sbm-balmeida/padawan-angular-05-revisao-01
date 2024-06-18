@@ -1,0 +1,62 @@
+<section class="container cadastro ff-inter">
+    <header class="header">
+        <h2>Se cadastre!</h2>
+    </header>
+
+    <form [formGroup]="formulario">
+
+        <label for="nome">Nome:</label>
+        <input 
+        type="text" 
+        class="input" 
+        id="nome" 
+        formControlName="nome" 
+        placeholder="Digite o seu nome..."
+        >
+        <div class="mensagem__erro" 
+        *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched">Nome é obrigatório!</div>
+
+        <label for="email">E-mail:</label>
+        <input 
+        type="email" 
+        class="input" 
+        id="email" 
+        formControlName="email" 
+        placeholder="Digite o seu e-mail..."
+        >
+        <div class="mensagem__erro" 
+        *ngIf="formulario.get('email')?.errors?.['required'] && formulario.get('email')?.touched">E-mail é obrigatório!</div>
+        
+        <label for="username">Nome de usuário:</label>
+        <input 
+        type="text" 
+        class="input" 
+        id="username" 
+        formControlName="username" 
+        placeholder="Digite um nome de usuário..."
+        >
+        <div class="mensagem__erro" 
+        *ngIf="formulario.get('username')?.errors?.['required'] && formulario.get('username')?.touched">Nome de usuário é obrigatório!</div>
+        <div class="mensagem__erro" 
+        *ngIf="formulario.get('username')?.errors?.['minlength']">Nome de usuário precisa ter no mínimo 3 caracteres!</div>
+
+        <label for="senha">Senha:</label>
+        <input 
+        type="password" 
+        class="input" 
+        id="senha" 
+        formControlName="senha" 
+        placeholder="Digite uma senha..."
+        >
+        <div class="mensagem__erro" 
+        *ngIf="formulario.get('senha')?.errors?.['required'] && formulario.get('senha')?.touched">Senha é obrigatória!</div>
+
+        <div class="acoes">
+            <button 
+            (click)="mudarRota()" 
+            [ngClass]="habilitarBotao()"
+            [disabled]="!formulario.valid">Cadastrar</button>
+        </div>
+
+    </form>
+</section>
